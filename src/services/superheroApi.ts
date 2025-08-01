@@ -1,11 +1,9 @@
 import { Superhero } from "@/types/superhero";
 
-const BASE_URL = '/api/superheroProxy';
-
 class SuperheroApiService {
   private async fetchFromApi<T>(path: string): Promise<T | null> {
     try {
-      const response = await fetch(`${BASE_URL}${path}`);
+      const response = await fetch(`/api/superheroProxy${path}`);
       
       if (!response.ok) {
         throw new Error(`API returned status ${response.status}`);
