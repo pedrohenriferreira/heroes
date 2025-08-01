@@ -8,10 +8,10 @@ export default defineConfig({
   host: "::",
   port: 8080,
   proxy: {
-    '/api/superhero': {
+    '/api/superheroProxy': {
       target: 'https://superheroapi.com/api.php/11f01a579d44c5255bc4fe1ec0fc3792',
       changeOrigin: true,
-      rewrite: (path) => path.replace(/^\/api\/superhero/, ''),
+      rewrite: (path) => path.replace(/^\/api\/superheroProxy/, ''),
     },
   },
 },

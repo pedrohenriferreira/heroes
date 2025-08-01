@@ -6,7 +6,7 @@ const BASE_URL = `https://superheroapi.com/api.php/${API_KEY}`;
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     // Remove /api/superhero da URL para formar o caminho real da API
-    const path = req.url?.replace(/^\/api\/superhero/, '') || '';
+    const path = req.url?.replace(/^\/api\/superheroProxy/, '') || '';
 
     const apiResponse = await fetch(`${BASE_URL}${path}`);
     const data = await apiResponse.json();
