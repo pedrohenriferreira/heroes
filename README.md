@@ -1,4 +1,4 @@
-# Hero Hub Finder 🦸‍♂️
+# Heroes 🦸‍♂️
 
 Uma aplicação moderna para descobrir e explorar o universo dos super-heróis! Desenvolvida como parte do processo seletivo da **Yooper** para vaga de estágio em desenvolvimento.
 
