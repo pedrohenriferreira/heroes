@@ -5,11 +5,18 @@ const BASE_URL = `https://superheroapi.com/api.php/${API_KEY}`;
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
-    const path = req.url?.replace(/^\/api\/superheroProxy/, '') || '';
-    const apiResponse = await fetch(`${BASE_URL}${path}`);
+    const fullPath = req.url || '';
+    
+    // Remove prefix e inclui query params se houver
+    const cleanedPath = fullPath.replace(/^\/api\/superheroProxy/, '');
+
+    const apiUrl = `${BASE_URL}${cleanedPath}`;
+    const apiResponse = await fetch(apiUrl);
     const data = await apiResponse.json();
-    res.status(200).json(data);
+
+    res.status(apiResponse.status).json(data);
   } catch (error) {
+    console.error('Proxy error:', error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 }
