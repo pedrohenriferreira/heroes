@@ -1,7 +1,7 @@
 import { Superhero } from "@/types/superhero";
 
 
-const BASE_URL = '/api/superheroProxy';
+const BASE_URL = '/api/superhero';
 
 class SuperheroApiService {
   private async fetchFromApi<T>(path: string): Promise<T | null> {
