@@ -15,8 +15,6 @@ class SuperheroApiService {
       
       const data = await response.json();
       
-      // A API retorna um objeto com uma propriedade 'response'. Se for 'error',
-      // o 'results' será um objeto com a mensagem de erro.
       if (data.response === "error") {
         console.error("API Error:", data.error);
         return null;
@@ -38,7 +36,7 @@ class SuperheroApiService {
     return data?.results || null;
   }
 
-  // NOVA FUNÇÃO: Busca vários heróis por ID
+  // Busca vários heróis por ID
   async getSuperheroesByIds(ids: string[]): Promise<Superhero[] | null> {
     try {
       const heroPromises = ids.map(id => this.getSuperheroById(id));
@@ -54,7 +52,7 @@ class SuperheroApiService {
 
   // Função para buscar os 20 primeiros heróis para a página inicial
   async getInitialSuperheroes(): Promise<Superhero[] | null> {
-    // Usamos um array.from para gerar os IDs de 1 a 20 e fazemos as requisições em paralelo
+
     const initialIds = Array.from({ length: 20 }, (_, i) => String(i + 1));
     const heroPromises = initialIds.map(id => this.getSuperheroById(id));
     
