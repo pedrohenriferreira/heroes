@@ -162,6 +162,43 @@ funciona perfeitamente em:
 - Biografia, aparência, trabalho e conexões
 - Sistema de favoritos integrado
 
+### Resposta técnica
+*"Como você lidaria com o limite de 5 favoritos se estivesse usando Redux ou Zustand?"*
+
+Se eu estivesse usando Redux, controlaria os favoritos por meio de um slice no estado global. Criaria um reducer que verifica o número atual de favoritos antes de permitir a adição de um novo. Se o limite de 5 já tiver sido atingido, impediria a adição e poderia exibir uma notificação para o usuário.
+
+```ts
+const initialState = {
+  favorites: [],
+};
+
+const favoritesReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'ADD_FAVORITE':
+      if (state.favorites.length >= 5) {
+        alert("Limite de favoritos atingido");
+        return state;
+      }
+      return {
+        ...state,
+        favorites: [...state.favorites, action.payload],
+      };
+
+    case 'REMOVE_FAVORITE':
+      return {
+        ...state,
+        favorites: state.favorites.filter(
+          (hero) => hero.id !== action.payload
+        ),
+      };
+
+    default:
+      return state;
+  }
+};
+export default favoritesReducer;
+```
+Dessa forma, o controle do limite fica centralizado na camada de estado, mantendo a UI limpa e o comportamento previsível.
 
 ---
 
