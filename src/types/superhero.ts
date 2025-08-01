@@ -35,7 +35,7 @@ export interface Image {
 }
 
 // Tipagem principal para o super-herói
-// src/types/superhero.ts
+
 
 export interface Superhero {
   id: string;
@@ -98,7 +98,7 @@ export interface SuperheroDetailResponse {
   image: Image;
 }
 
-// Tipagem para o estado dos filtros no Home.tsx
+
 export interface FilterState {
   searchTerm: string;
   sortBy: "name" | "intelligence" | "strength" | "speed" | "durability" | "power" | "combat";
